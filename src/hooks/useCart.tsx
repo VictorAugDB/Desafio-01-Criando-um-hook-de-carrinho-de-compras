@@ -72,17 +72,15 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     try {
       const productExists = cart.find(product => product.id === productId)
 
-      if (!productExists) {
-        throw new Error();
+      if (productExists) {
+        const cartWithoutRemovedProduct = cart.filter(product => product.id !== productId)
+
+        setCart(cartWithoutRemovedProduct)
+
+        localStorage.setItem("@RocketShoes:cart", JSON.stringify(cartWithoutRemovedProduct))
+      } else {
+        throw Error()
       }
-
-      api.delete(`products/${productId}`)
-
-      const cartWithoutRemovedProduct = cart.filter(product => product.id !== productId)
-
-      setCart(cartWithoutRemovedProduct)
-
-      localStorage.setItem("@RocketShoes:cart", JSON.stringify(cartWithoutRemovedProduct))
     } catch {
       toast.error('Erro na remoção do produto');
     }
