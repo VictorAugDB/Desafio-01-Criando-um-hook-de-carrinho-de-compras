@@ -301,6 +301,8 @@ describe('useCart Hook', () => {
 
     await waitForNextUpdate({ timeout: 200 });
 
+    console.log(result.current.cart)
+
     expect(result.current.cart).toEqual(
       expect.arrayContaining([
         {
@@ -314,10 +316,9 @@ describe('useCart Hook', () => {
         {
           id: 2,
           amount: 2,
-          image:
-            'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
+          title: "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
           price: 139.9,
-          title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
+          image: "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg"
         },
       ])
     );
