@@ -8,6 +8,9 @@
 
 ### Rode o comando
 > yarn
+> 
+### Rode o comando em um terminal separado
+> yarn server
 
 ### Execute o projeto
 > yarn dev
